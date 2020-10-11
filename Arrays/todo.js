@@ -26,14 +26,22 @@ const removeItem = function (todo, todoText) {
     if(index > -1){todo.splice(index,1)}
 }
 
+const addItem = function(todo, todoText) {
+    todo.push(todoText)
+}
+
 const getThingsToDo = function (todo){
     return todo.filter(function (todos) {
             return !todos.completed
     })
 }
 
+addItem(todo, {text:'New Todo added', completed:true})
 sortTodo(todo)
 console.log(todo);
+
+// sortTodo(todo)
+// console.log(todo);
 // console.log(getThingsToDo(todo));
 // // removeItem(todo , 'tailwind css learning')
 // // console.log(todo);
