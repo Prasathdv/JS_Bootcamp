@@ -4,9 +4,9 @@
 //  template to print - 'You got C (75%) grade '
 //  Grade value : A 90-100, B 80-89, C 70-79, D 60-69, F 0-59
 
-let ScoreCard = function (studentsScore=0, totalPossibleScore=100){
+const ScoreCard = function (studentsScore=0, totalPossibleScore=100){
     
-    let mark = (studentsScore/totalPossibleScore)*100
+    const mark = (studentsScore/totalPossibleScore)*100
     let grade =''
     if(mark>=90){
         grade = 'A'
@@ -22,19 +22,19 @@ let ScoreCard = function (studentsScore=0, totalPossibleScore=100){
     return `You got ${grade}(${mark}%) grade`
 }
 
-let student1Grade = ScoreCard(92,100)
+const student1Grade = ScoreCard(92,100)
 console.log(student1Grade);
-let student2Grade = ScoreCard(12,20)
+const student2Grade = ScoreCard(12,20)
 console.log(student2Grade);
-let student3Grade = ScoreCard(70,200)
+const student3Grade = ScoreCard(70,200)
 console.log(student3Grade);
-let student4Grade = ScoreCard(23,50)
+const student4Grade = ScoreCard(23,50)
 console.log(student4Grade);
-let student5Grade = ScoreCard(10,10)
+const student5Grade = ScoreCard(10,10)
 console.log(student5Grade);
-let student6Grade = ScoreCard()
+const student6Grade = ScoreCard()
 console.log(student6Grade);
-let student7Grade = ScoreCard(10)
+const student7Grade = ScoreCard(10)
 console.log(student7Grade);
-let student8Grade = ScoreCard(null,25)
+const student8Grade = ScoreCard(null,25)
 console.log(student8Grade);
