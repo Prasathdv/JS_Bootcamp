@@ -31,3 +31,7 @@ document.querySelector('#remove-todo').addEventListener('click',function (e){
         todo.remove()
     })
 })
+
+document.querySelector('#new-todo').addEventListener('input', function (e) {
+    console.log(e.target.value);
+})

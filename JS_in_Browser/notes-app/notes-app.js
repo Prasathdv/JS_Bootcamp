@@ -25,3 +25,7 @@ document.querySelector('#remove-all').addEventListener('click', function (e) {
         note.remove()
     })
 })
+
+document.querySelector('#filter-notes').addEventListener('input', function (filterText){
+    console.log(filterText.target.value)
+    })
