@@ -1,53 +1,31 @@
-// Declare an notes array
-const notes = [{
-    title: 'Learning Goal',
-    body: 'Completed learning about JS Arrays and its methods'
-},{
-    title: 'Plan for a trip',
-    body: 'Plan for a trip to any south TN location'
-},{
-    title: 'Be fit',
-    body: 'Do excercise regularly to keep your body fit'
-},{
-    title: 'Read Books',
-    body: 'Read good books to get yourself motivated.'
-},{
-    title: 'Career Plan',
-    body: 'Plan for new company shift'
-}
-]
+// Declare an empty notes array
+const notes = getSavedNotes()
 // initialize an empty object for capturing the query input from user for finding notes.
 const filters = {
     queriedText : ''
 }
-
-// Create a function to render the text based on the filter input
-const renderText = function (notes, filters){
-    const filteredText = notes.filter(function(note){
-        return note.title.toLowerCase().includes(filters.queriedText.toLowerCase())
-    })
-    // To clear the text rendering for the filtered search
-    document.querySelector('#notes').innerHTML = ''
-    // To create p element based on the search list
-    filteredText.forEach(function (filter){
-        let noteElement = document.createElement('h5')
-        noteElement.textContent = filter.title
-        document.querySelector('#notes').appendChild(noteElement)
-    })
-}
 // To render intial screen before filtering
 renderText(notes,filters)
 
-document.querySelector('#add-notes').addEventListener('click', function(e) {
-    e.target.textContent = 'Notes added!'
-})
-
-document.querySelector('#filter-notes').addEventListener('input', function (filterText){
-    filters.queriedText = filterText.target.value
-    renderText(notes,filters)
+// Listen to add new notes event
+document.querySelector('#notes-add').addEventListener('submit', function(e) {
+    e.preventDefault() 
+    // Add new note
+    notes.push({
+        title: e.target.elements.notesTitle.value,
+        body: 'default Text'
     })
-
-document.querySelector('#inputForm').addEventListener('submit', function (e) {
-    e.preventDefault()
-    console.log(e.target.elements.inputName.value)
+    // add the JSON to local storage
+    saveNotes(notes)
+    renderText(notes, filters)
+    e.target.elements.notesTitle.value = ''
+})
+// Listen to sort notes event
+document.querySelector('#sort-text').addEventListener('change', function (e){
+    console.log(e.target.value)
+})
+// Listen to filter notes event
+document.querySelector('#filter-notes').addEventListener('input', function (e){
+    filters.queriedText = e.target.value
+    renderText(notes, filters)
 })
